@@ -1080,10 +1080,10 @@ audio {
 	bottom: -200px;
 	opacity: 0.6;
 	z-index: 99;
-	width: 100px;
-	height: 183px;
+	width: 75px;
+	height: 137px;
 	background-repeat: no-repeat no-repeat;
-	background-size: 100px 183px;
+	background-size: cover;
 }
 .balloons h2 {
 	text-transform: uppercase;
@@ -1290,15 +1290,24 @@ audio {
         color: #fff;
         background-color: #466baf;
 }
-    .btn-primary:hover,
-    .btn-primary:focus,
-    .btn-primary:active,
-    .btn-primary.active,
-    .open .dropdown-toggle.btn-primary {
-        border-color: #fff;
-        color: #fff;
-        background-color: #466baf;
-    }
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+	border-color: #fff;
+	color: #fff;
+	background-color: #466baf;
+}
+
+.owl-video-wrapper {
+	height: 300px !important;
+}
+
+.owl-carousel {
+	display: none;
+}
 
 
 
