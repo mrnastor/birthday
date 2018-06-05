@@ -9,7 +9,7 @@
 	<meta charset="UTF-8" />
 	<meta name="description" content="Happy Birthday Bugen!">
 	<meta name="robots" content="index, follow" />
-    <meta name="keywords" content="Birthday, Happy">
+    <meta name="keywords" content="Birthday, Happy, bugen, wala, na, sa, kalendaryo">
     <!-- Strat of Facebook Meta -->
     <meta property="og:type" content="E-Greeting" />
     <meta property="og:image" content="36.gif" />
@@ -25,12 +25,14 @@
 	<link href='http://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
 	<!-- <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'> -->
 	<link rel="stylesheet/less" href="cake.less">
-	<link rel="stylesheet" href="node_modules/owl.carousel/dist/assets/owl.carousel.min.css" />
-	<link rel="stylesheet" href="node_modules/owl.carousel/dist/assets/owl.theme.default.min.css" />
 	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.0/less.min.js"></script>
 </head>
 
 <body>
+	<div id="overlay"></div>
+	<div class="dead-centered">
+		<div id="player"></div>
+	</div>
 	<div class="loading"></div>
 	<audio class="song" controls loop>
         <source src="hbd.mp3"></source>
@@ -111,15 +113,15 @@
 				<p>Today is...</p>
 				<p>as beautiful as other days</p>
 				<p>but you realize</p>
-				<p>another year has gone</p>
+				<!-- <p>another year has gone</p>
 				<p>in a blink of the eyes</p>
 				<p><strong>however</strong></p>
 				<p>Do you know..?</p>
 				<p>today is just special</p>
 				<p>so special to you</p>
 				<p>that's why</p>
-				<p>Let's make it...</p>
-				<p>the best celebration ever</p>
+				<p>Let's make it...</p> -->
+				<!-- <p>the best celebration ever</p>
 				<p>and let me share...</p>
 				<p>a piece of happiness to you</p>
 				<p>I made all this...</p>
@@ -156,19 +158,20 @@
 				<p>and make it the best memory..</p>
 				<p>lastly...</p>
 				<p>I'd like to wish you one more time</p>
-				<p>a very happy birthday</p>
+				<p>a very happy birthday</p> -->
 			</div>
 		</div>
 		<div class="row owl-carousel owl-theme">
-			<div class="item-video" data-merge="3"><a class="owl-video" href="https://www.youtube.com/watch?v=aF7ulsNkPXk"></a></div>
-			<div class="item-video" data-merge="1"><a class="owl-video" href="https://www.youtube.com/watch?v=xxOviBI-8fc"></a></div>
+			<div class="item-video" data-merge="2"><a class="owl-video" href="https://www.youtube.com/watch?v=aF7ulsNkPXk&autoplay=1"></a></div>
+			<div class="item-video" data-merge="2"><a class="owl-video" href="https://www.youtube.com/watch?v=xxOviBI-8fc"></a></div>
 			<div class="item-video" data-merge="2"><a class="owl-video" href="https://www.youtube.com/watch?v=FBu_jxT1PkA"></a></div>
-			<div class="item-video" data-merge="1"><a class="owl-video" href="https://www.youtube.com/watch?v=oy18DJwy5lI"></a></div>
+			<div class="item-video" data-merge="2"><a class="owl-video" href="https://www.youtube.com/watch?v=oy18DJwy5lI"></a></div>
 			<div class="item-video" data-merge="2"><a class="owl-video" href="https://www.youtube.com/watch?v=ioMP4yFQTd0"></a></div>
-			<div class="item-video" data-merge="3"><a class="owl-video" href="https://www.youtube.com/watch?v=g3J4VxWIM6s"></a></div>
-			<div class="item-video" data-merge="1"><a class="owl-video" href="https://www.youtube.com/watch?v=0fhoIate4qI"></a></div>
+			<div class="item-video" data-merge="2"><a class="owl-video" href="https://www.youtube.com/watch?v=g3J4VxWIM6s"></a></div>
+			<div class="item-video" data-merge="2"><a class="owl-video" href="https://www.youtube.com/watch?v=0fhoIate4qI"></a></div>
 			<div class="item-video" data-merge="2"><a class="owl-video" href="https://www.youtube.com/watch?v=EF_kj2ojZaE"></a></div>
 		</div>
+		
 		<div class="navbar navbar-fixed-bottom">
 			<div class="row">
 				<div class="col-md-6 text-center col-md-offset-3">
@@ -202,17 +205,17 @@
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-<script src="node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
 <script src="effect.js"></script>
+<script src="http://www.youtube.com/iframe_api"></script>
 
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+//   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+//   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+//   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+//   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-58229732-1', 'auto');
-  ga('send', 'pageview');
+//   ga('create', 'UA-58229732-1', 'auto');
+//   ga('send', 'pageview');
 
 </script>
 </html>
