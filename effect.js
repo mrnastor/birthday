@@ -3,20 +3,21 @@ $(window).load(function(){
 	$('.container').fadeIn('fast');
 });
 $('document').ready(function(){
-		var vw;
-		$(window).resize(function(){
-			 vw = $(window).width()/2;
-			$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
-			$('#b11').animate({top:240, left: vw-350},500);
-			$('#b22').animate({top:240, left: vw-250},500);
-			$('#b33').animate({top:240, left: vw-150},500);
-			$('#b44').animate({top:240, left: vw-50},500);
-			$('#b55').animate({top:240, left: vw+50},500);
-			$('#b66').animate({top:240, left: vw+150},500);
-			$('#b77').animate({top:240, left: vw+250},500);
-		});
+	var vw;
+	$(window).resize(function(){
+			vw = $(window).width()/2;
+		$('#b1,#b2,#b3,#b4,#b5,#b6,#b7').stop();
+		$('#b11').animate({top:240, left: vw-350},500);
+		$('#b22').animate({top:240, left: vw-250},500);
+		$('#b33').animate({top:240, left: vw-150},500);
+		$('#b44').animate({top:240, left: vw-50},500);
+		$('#b55').animate({top:240, left: vw+50},500);
+		$('#b66').animate({top:240, left: vw+150},500);
+		$('#b77').animate({top:240, left: vw+250},500);
+	});
 
-	$('#turn_on').click(function(){
+	$('#switch').change(function(){
+		$('.switch').delay(1000).fadeOut("slow")
 		$('#bulb_yellow').addClass('bulb-glow-yellow');
 		$('#bulb_red').addClass('bulb-glow-red');
 		$('#bulb_blue').addClass('bulb-glow-blue');
@@ -55,6 +56,7 @@ $('document').ready(function(){
 	});
 	
 	function loopOne() {
+		
 		var randleft = 1000*Math.random();
 		var randtop = 500*Math.random();
 		$('#b1').animate({left:randleft,bottom:randtop},10000,function(){
@@ -105,6 +107,99 @@ $('document').ready(function(){
 		});
 	}
 
+	function handWrite(text, selector, colorseq) {
+		//resize the canvas 
+		canvas = document.querySelector(selector)
+		canvas.width = window.innerWidth - 50;
+    	canvas.height = window.innerHeight;
+
+		// get 2D context
+		var ctx = document.querySelector(selector).getContext("2d"),
+	
+		// dash-length for off-range
+		dashLen = 220,
+	
+		// we'll update this, initialize
+		dashOffset = dashLen,
+	
+		// some arbitrary speed
+		speed = 5,
+	
+		// the text we will draw
+		txt = text,
+	
+		// start position for x and iterator
+		x = 5, i = 0, y = 90, clearY = 0;
+	
+		// Comic Sans?? Let's make it useful for something ;) w/ fallbacks
+		ctx.font = "50px Loved by the King"; 
+	
+		// thickness of the line
+		ctx.lineWidth = 1; 
+	
+		// to avoid spikes we can join each line with a round joint
+		//ctx.lineJoin = "round";
+	
+		// increase realism letting background (f.ex. paper) show through
+		ctx.globalAlpha = 2/3;
+	
+		// some color, lets use a black pencil
+		// "#C4515C";
+	
+	
+		(function loop() {
+			if(colorseq[i]) {
+				ctx.strokeStyle = ctx.fillStyle = colorseq[i];
+			}
+
+			// console.log("x", x, y)
+
+			// clear canvas for each frame
+			ctx.clearRect(x, clearY, 60, 150);
+			
+			// calculate and set current line-dash for this char
+			ctx.setLineDash([dashLen - dashOffset, dashOffset - speed]);
+			
+			// reduce length of off-dash
+			dashOffset -= speed;
+			
+			// draw char to canvas with current dash-length
+			if(txt[i] != '¥') ctx.strokeText(txt[i], x, y);
+	
+			// char done? no, the loop
+			if (dashOffset > 0) requestAnimationFrame(loop);
+			else {
+				if(x > (canvas.width) && txt[i] != '¥'){
+					y += 100;
+					x = 0;
+					clearY += 100;
+				} 
+
+				// ok, outline done, lets fill its interior before next
+				if(txt[i] != '¥') ctx.fillText(txt[i], x, y);
+				
+				// reset line-dash length
+				dashOffset = dashLen;
+				
+				// get x position to next char by measuring what we have drawn
+				// notice we offset it a little by random to increase realism
+				x += ctx.measureText(txt[i++]).width + ctx.lineWidth * Math.random();
+				
+				// lets use an absolute transform to randomize y-position a little
+				ctx.setTransform(1, 0, 0, 1, 0, 3 * Math.random());
+				
+				// and just cause we can, rotate it a little too to make it even
+				// more realistic
+				ctx.rotate(Math.random() * 0.005);
+				
+				// if we still have chars left, loop animation again for this char
+				if (i < txt.length) requestAnimationFrame(loop);
+			}
+			})();  // just to self-invoke the loop
+	}
+
+	
+
 	$('#balloons_flying').click(function(){
 		$('.balloons').show()
 		$('.balloon-border').animate({top:-500},8000);
@@ -124,8 +219,8 @@ $('document').ready(function(){
 		loopSeven();
 		
 		$(this).fadeOut('slow').delay(5000).promise().done(function(){
-			// $('#cake_fadein').fadeIn('slow');
-			$('#cake_fadein').click();
+			// $('#cake_fadein').fadeIn('slow')
+			$('#cake_fadein').delay(2000).click();
 		});
 	});	
 
@@ -133,7 +228,7 @@ $('document').ready(function(){
 		$('.cake').fadeIn('slow');
 		$(this).fadeOut('slow').delay(3000).promise().done(function(){
 			// $('#light_candle').fadeIn('slow');
-			$('#light_candle').click();
+			$('#light_candle').delay(2000).click();
 		});
 	});
 
@@ -141,7 +236,7 @@ $('document').ready(function(){
 		$('.fuego').fadeIn('slow');
 		$(this).fadeOut('slow').promise().done(function(){
 			// $('#wish_message').fadeIn('slow');
-			$('#wish_message').click();
+			$('#wish_message').delay(2000).click();
 		});
 	});
 
@@ -209,7 +304,7 @@ $('document').ready(function(){
 			function onYouTubeIframeAPIReady() {
 				player = new YT.Player('player', {
 					height: '350',
-					width: '425',
+					width: '400',
 					playerVars: {
 						rel: 0,
 						showinfo: 0,
@@ -234,6 +329,7 @@ $('document').ready(function(){
 					} else {
 						$('#player').fadeOut('fast')
 						$('#overlay').fadeOut('fast')
+						handWrite("♥ Brennus &¥¥¥¥¥¥¥Daddy Benson,¥¥¥¥¥¥¥Mwahhh!", "#canv2", ["red","green"])
 					}
 				}
 			}
@@ -244,7 +340,7 @@ $('document').ready(function(){
 			$("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
 				i=i+1;
 				if(!$("p:nth-child("+i+")").length){
-					$("p:nth-child(49)").fadeOut('slow').promise().done(function () {
+					$("p:nth-child(49)").fadeOut('slow').delay(3000).promise().done(function () {
 						// $('.cake').fadeIn('fast');
 						loadCarousel()
 					});
@@ -260,4 +356,29 @@ $('document').ready(function(){
 		msgLoop(0);
 		
 	});
+
+	// handWrite(, "#canv1", "red").promise().done( function(){
+	// 	)
+	// })
+
+	
+	
 });
+
+WebFontConfig = {
+    google: { families: [ 'Loved+by+the+King::latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })(); 
+
+
+
+
+
