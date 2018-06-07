@@ -123,7 +123,7 @@ $('document').ready(function(){
 		dashOffset = dashLen,
 	
 		// some arbitrary speed
-		speed = 5,
+		speed = 20,
 	
 		// the text we will draw
 		txt = text,
@@ -329,7 +329,7 @@ $('document').ready(function(){
 					} else {
 						$('#player').fadeOut('fast')
 						$('#overlay').fadeOut('fast')
-						handWrite("♥ Brennus &¥¥¥¥¥¥¥Daddy Benson,¥¥¥¥¥¥¥Mwahhh!", "#canv2", ["red","green"])
+						handWrite("♥ Brennus &¥¥¥¥¥¥¥  Daddy Benson,¥¥¥¥¥¥¥   Mwahhh!", "#canv2", ["red","green"])
 					}
 				}
 			}
@@ -360,8 +360,6 @@ $('document').ready(function(){
 	// handWrite(, "#canv1", "red").promise().done( function(){
 	// 	)
 	// })
-
-	
 	
 });
 
