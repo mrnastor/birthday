@@ -1271,6 +1271,7 @@ audio {
 .message {
 	margin-top: 200px;
 	display: none;
+	
 }
 .message p {
 	font-family: 'Signika', sans-serif;
@@ -1280,6 +1281,29 @@ audio {
 	text-shadow: 2px 2px 2px #FFF;
 	display: none;
 	font-weight: bold;
+	/* padding-left: 100px; */
+}
+
+.messages p:before{
+	content: "";
+	display: block;
+	background :url('stargazer.png') no-repeat; /* with class ModalCarrot ??*/
+	position:relative; /*or absolute*/
+	z-index:100000; /*a number that's more than the modal box*/
+	/* left:-50px; */
+	/* top:10px; */
+	/* background-size: 40px 50px; */
+	width: 25px;
+    height: 25px;
+    float: left;
+}
+
+.flower {
+	width: 65px;
+	position: absolute;
+	top: -85px;
+	left: 50%;
+	transform: translate(-50%);
 }
 
 .btn-primary {

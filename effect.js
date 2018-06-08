@@ -253,7 +253,7 @@ $('document').ready(function(){
 		$('.balloons').each(function(index, balloon){
 			newIndex = (index + 1 + "").repeat(2)
 			curXPos = (index - parseInt(numBlns/2)) * 60 - 50
-			$(balloon).attr('id','b' + newIndex).animate({top:220, left: vw + curXPos},500);
+			$(balloon).attr('id','b' + newIndex).animate({top:180, left: vw + curXPos},500);
 		})
 
 		// $('#b1').attr('id','b11');
@@ -327,6 +327,8 @@ $('document').ready(function(){
 					if (currentVideoId < videoIDs.length) {
 						player.loadVideoById(videoIDs[currentVideoId]);
 					} else {
+						$(".balloons").wrap( "<div class='new'></div>" );
+						$(".balloons").stop();
 						$('#player').fadeOut('fast')
 						$('#overlay').fadeOut('fast')
 						handWrite("♥ Brennus &¥¥¥¥¥¥¥  Daddy Benson,¥¥¥¥¥¥¥   Mwahhh!", "#canv2", ["red","green"])
@@ -337,10 +339,10 @@ $('document').ready(function(){
 		}
 
 		function msgLoop (i) {
-			$("p:nth-child("+i+")").fadeOut('slow').delay(800).promise().done(function(){
+			$("p:nth-child("+i+")").delay(2000).fadeOut('slow').promise().done(function(){
 				i=i+1;
 				if(!$("p:nth-child("+i+")").length){
-					$("p:nth-child(49)").fadeOut('slow').delay(3000).promise().done(function () {
+					$("p:nth-child(49)").delay(2000).fadeOut('slow').promise().done(function () {
 						// $('.cake').fadeIn('fast');
 						loadCarousel()
 					});
@@ -352,7 +354,7 @@ $('document').ready(function(){
 			});
 			// body...
 		}
-		
+		$("p").prepend('<img class="flower" src="stargazer.png"/>')
 		msgLoop(0);
 		
 	});
