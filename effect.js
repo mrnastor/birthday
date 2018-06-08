@@ -327,7 +327,7 @@ $('document').ready(function(){
 					if (currentVideoId < videoIDs.length) {
 						player.loadVideoById(videoIDs[currentVideoId]);
 					} else {
-						$(".balloons").wrap( "<div class='new'></div>" );
+						$(".balloons").wrapAll( "<div class='new'></div>" );
 						$(".balloons").stop();
 						$('#player').fadeOut('fast')
 						$('#overlay').fadeOut('fast')
