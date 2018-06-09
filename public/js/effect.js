@@ -354,7 +354,7 @@ $('document').ready(function(){
 			});
 			// body...
 		}
-		$("p").prepend('<img class="flower" src="stargazer.png"/>')
+		$("p").prepend('<img class="flower" src="img/stargazer.png"/>')
 		msgLoop(0);
 		
 	});
